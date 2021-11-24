@@ -195,7 +195,7 @@ df_openalex_c['paper']=(
     .groupBy('PaperId')
     .agg(
       func.collect_list(
-        func.struct('ResourceType','ResourceUrl','SourceUrl')
+        func.struct('ResourceType','ResourceUrl','SourceUrl','RelationshipType')
       ).alias('Resources')
     ),
     ['PaperId'],'LEFT_OUTER'
