@@ -3,11 +3,23 @@ from pyspark.sql import functions as func
 
 # COMMAND ----------
 
-# MAGIC %run "./schema"
+# MAGIC %md ## schema
 
 # COMMAND ----------
 
-# MAGIC %run "./config"
+# MAGIC %run ./schema
+
+# COMMAND ----------
+
+# MAGIC %md ## config
+
+# COMMAND ----------
+
+# MAGIC %run ./config
+
+# COMMAND ----------
+
+# MAGIC %md ## get dataframes
 
 # COMMAND ----------
 

@@ -23,18 +23,15 @@ def file_exists(path):
 
 # COMMAND ----------
 
-partition_sizes={
-  'author':1000,
-  'affiliation':10,
-  'fieldofstudy':10,
-  'paper':1000,
-  'journal':10,
-  'default':200
-}
+# MAGIC %run ./config
 
 # COMMAND ----------
 
-# MAGIC %run "./OpenAlex load raw"
+# MAGIC %md ## load raw txt files
+
+# COMMAND ----------
+
+# MAGIC %run ./load_raw
 
 # COMMAND ----------
 
@@ -420,26 +417,3 @@ df_openalex_c['author']=(
 df_openalex_c['affiliation']=(
   df_raw_import['Affiliations']
 )
-
-# COMMAND ----------
-
-# MAGIC %md # Store
-
-# COMMAND ----------
-
-for table in df_openalex_c:
-  target=f'{base_path}parquet/{table}'
-  if table in partition_sizes:
-    partitions=partition_sizes[table]
-  else:
-    partitions=partition_sizes['default']
-  if file_exists(target):
-    print(f'{target} already exists, skip')
-  else:
-    print(f'writing {target}')
-    df_openalex_c[table].repartition(partitions).write.format('parquet').save(target)
-
-
-# COMMAND ----------
-
-
