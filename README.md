@@ -1,2 +1,4 @@
 # openalex-pyspark
-Repo for pyspark etl processes on top of raw OpenAlex data (https://openalex.org)
+Repo for pyspark ETL processing code for raw OpenAlex data (https://openalex.org/data-dump)
+
+Notebooks prepared here run are compatible with pyspark on databricks
